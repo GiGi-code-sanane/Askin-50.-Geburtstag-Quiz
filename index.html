@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die ultimative 50er-Challenge</title>
+  <style>
+body{
+    font-family: Arial, sans-serif;
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+    background:#faf7f2;
+    color:#333;
+}
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+button{
+    margin-top:10px;
+    padding:10px 20px;
+    cursor:pointer;
+}
+.hidden{
+    display:none;
+}
+h1,h2{
+    color:#8b4513;
+}
+</style>
+
+
+  </head>
+
+  <body>
+
+    <div class="card">
+
+  <h1>🎉 Die ultimative 50er-Challenge 🎉</h1>
+
+      <p>
+Lieber Freund,
+<br><br>
+14 Jahre Freundschaft.
+10 Fragen.
+1 Reise.
+<br><br>
+Bevor du dein Geburtstagsgeschenk erhältst, musst du beweisen,
+dass du unsere gemeinsame Geschichte noch kennst.
+</p>
+
+<div id="quiz"></div>
+
+  <div id="result" class="hidden">
+
+    <h2>🏆 Herzlichen Glückwunsch!</h2>
+
+   <p>
+Du hast alle Herausforderungen gemeistert.
+</p>
+
+   <p>
+Die gesammelten Buchstaben ergeben:
+</p>
+
+   <h1>U S B E K I S T A N</h1>
+
+   <p>
+Und genau dorthin führt dein nächstes Abenteuer.
+</p>
+
+  <p>
+Lieber Freund,
+<br><br>
+seit 2012 bereicherst du unser Leben mit deiner Freundschaft,
+deinen großartigen Reiseideen, deinem Steuerwissen,
+deiner Leidenschaft für Immobilien,
+deiner Peloton-Motivation
+und natürlich mit legendären kulinarischen Erlebnissen.
+</p>
+
+   <p>
+Besonders unvergessen bleibt dein Adana Kebap im Frankfurter Park,
+unsere Restauranttouren durch Frankfurt
+und die vielen Weinwanderungen, die du geplant hast.
+</p>
+
+  <p>
+Wir vermissen unsere gemeinsame Zeit in Frankfurt
+und freuen uns auf viele weitere Abenteuer mit dir.
+</p>
+
+  <h2>✈️ Für deine Reise nach Usbekistan haben wir einen kleinen Reisebeitrag vorbereitet.</h2>
+
+   <p>
+Damit wir ihn direkt an die richtige Stelle schicken können,
+gib bitte deine PayPal-Adresse ein:
+</p>
+
+ <input type="email" id="paypal" placeholder="PayPal E-Mail" style="width:300px;padding:8px;">
+
+  <div id="final" class="hidden">
+
+  <h2>🎁 Geschenk freigeschaltet!</h2>
+
+   <p>
+Vielen Dank!
+<br><br>
+Dein Reisebudget wartet bereits in deiner Geburtstagskarte.
+<br><br>
+Wir wünschen dir eine fantastische Reise nach Usbekistan,
+viele kulinarische Entdeckungen,
+spannende Immobilien-Ideen
+und unvergessliche Erinnerungen.
+</p>
+
+  <p>
+❤️ Deine Freunde
+</p>
+
+ </div>
+
+  </div>
+
+    </div>
+
+ <script>
+
+const questions = [
+{
+q:"Seit welchem Jahr kennen wir uns?",
+a:["2008","2010","2012"],
+c:2
+},
+{
+q:"Wofür bist du unser Experte?",
+a:["Fußball","Steuererklärungen","Gartenbau"],
+c:1
+},
+{
+q:"Was liebst du besonders beim Essen?",
+a:["Salat","Fleisch","Tofu"],
+c:1
+},
+{
+q:"In welcher Stadt haben wir viele Restaurants ausprobiert?",
+a:["Frankfurt","Köln","Hamburg"],
+c:0
+},
+{
+q:"Welches Gericht hast du im Park für uns gemacht?",
+a:["Pizza","Adana Kebap","Burger"],
+c:1
+},
+{
+q:"Was hast du uns nähergebracht?",
+a:["Legoland","Golf","Segeln"],
+c:0
+},
+{
+q:"Welche Ausflüge planst du besonders gut?",
+a:["Kreuzfahrten","Weinwanderungen","Skiurlaube"],
+c:1
+},
+{
+q:"Welches Hobby begeistert dich?",
+a:["Immobilien","Schach","Angeln"],
+c:0
+},
+{
+q:"Welche Sport-App verbindet uns?",
+a:["Zwift","Strava","Peloton"],
+c:2
+},
+{
+q:"Welche gemeinsame Zeit vermissen wir?",
+a:["Frankfurt","Berlin","München"],
+c:0
+}
+];
+
+let current=0;
+
+function loadQuestion(){
+
+if(current>=questions.length){
+document.getElementById("quiz").classList.add("hidden");
+document.getElementById("result").classList.remove("hidden");
+return;
+}
+
+let q=questions[current];
+
+let html="<h2>Frage "+(current+1)+"</h2>";
+html+="<p>"+q.q+"</p>";
+
+q.a.forEach((answer,index)=>{
+html+=`<button onclick="answer(${index})">${answer}</button><br><br>`;
+});
+
+document.getElementById("quiz").innerHTML=html;
+}
+
+function answer(index){
+
+if(index===questions[current].c){
+current++;
+loadQuestion();
+}else{
+alert("Nicht ganz 😄 Versuch es noch einmal.");
+}
+}
+
+function showFinal(){
+document.getElementById("final").classList.remove("hidden");
+}
+
+loadQuestion();
+
+</script>
+
+ </body>
+</html>
+
+
+
+  
